@@ -42,10 +42,7 @@ const Login: React.FC<Props> = ({ isRegistering, providers }) => {
       const response = await signIn("credentials", {
         email,
         password,
-        callbackUrl:
-          process.env.NODE_ENV === "production"
-            ? "https://picturefeed.vercel.app"
-            : "http://localhost:3000",
+        callbackUrl: process.env.NEXTAUTH_URL,
         redirect: false,
       });
       console.log(response);
@@ -86,10 +83,10 @@ const Login: React.FC<Props> = ({ isRegistering, providers }) => {
       <Formik<Values>
         validationSchema={isRegistering ? registerSchema : loginSchema}
         initialValues={{
-          email: "thomas@example.com",
-          name: "Thomas Jonnes",
-          username: "thomas",
-          password: "Ccm5555%",
+          email: "",
+          name: "",
+          username: "",
+          password: "",
         }}
         onSubmit={async (values, { setErrors, setSubmitting }) => {
           setSubmitting(true);

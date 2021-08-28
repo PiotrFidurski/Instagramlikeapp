@@ -29,19 +29,6 @@ const options = (context: { req: NextApiRequest; res: NextApiResponse }) => ({
           })
         | undefined
     ) {
-      // console.log({ jwtcb: { token, user } });
-      // if (token.sub !== undefined) {
-      // user comes from credentials callback
-      // }
-      // await dbConnect();
-
-      // const dbUser = await User.findOne({
-      //   $or: [
-      //     { _id: { $eq: Types.ObjectId(user?.id!) } },
-      //     { _id: { $eq: Types.ObjectId(user?._id!) } },
-      //   ],
-      // });
-
       user && (token.user = user);
 
       return token;
@@ -77,9 +64,9 @@ const options = (context: { req: NextApiRequest; res: NextApiResponse }) => ({
           },
           {
             $set: {
-              username: `${
-                currentUser?.name
-              }${currentUser?._id.toString()?.slice(20)}`,
+              username: `${currentUser?.name}${currentUser?._id
+                .toString()
+                ?.slice(20)}`,
               changedNameOnSignIn: true,
             },
           },
