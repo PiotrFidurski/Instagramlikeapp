@@ -225,7 +225,7 @@ export const menuCaret = css`
   width: 15px;
   height: 15px;
   z-index: -1;
-  background: var(--container-background);
+  background: var(--background-color);
   top: -7px;
   box-shadow: 0 0 5px 1px var(--shadow-color);
   transform: rotate(45deg);
@@ -252,7 +252,7 @@ export const StyledMenuItem = styled.div(
     color: danger ? "#ef5350" : "var(--primary-text-color)",
     background: active
       ? "var(--container-hover-background)"
-      : "var(--container-background)",
+      : "var(--background-color)",
     padding: "8px 16px",
     cursor: "pointer",
   })
@@ -346,16 +346,8 @@ export const Spinner = styled.div({
   height: "24px",
   marginRight: "5px",
   borderRadius: "9999px",
-  border: "2px solid var(--border-color)",
+  border: "3px solid var(--border-color)",
   borderLeft: "3px solid var(--primary-text-color)",
   background: "transparent",
   animation: `${spin}  0.8s infinite linear`,
 });
-
-// width: "24px",
-//   height: "24px",
-//   marginRight: "5px",
-//   border-radius: "9999px",
-//   border: "2px solid var(--border-color)",
-//   border-left: "3px solid var(--primary-text-color)",
-//   background: "transparent",

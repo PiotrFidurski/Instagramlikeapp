@@ -38,7 +38,7 @@ export const DropdownMenu: React.FC<Props> = ({ ...props }) => {
               css={{
                 position: "relative",
                 borderRadius: "3px",
-                background: "var(--container-background)",
+                background: "var(--background-color)",
                 overflowY: "auto",
               }}
             >

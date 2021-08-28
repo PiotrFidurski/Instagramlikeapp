@@ -40,7 +40,11 @@ const Provider: React.FC<ProviderProps> = ({ provider }) => {
           signIn(provider.id, { callbackUrl: "/" });
         }}
       >
-        {!loading ? data[provider.name]?.().render : <Spinner />}
+        {!loading ? (
+          data[provider.name]?.().render
+        ) : (
+          <Spinner css={{ borderLeft: "3px solid white" }} />
+        )}
         <span css={elipsisText}>Sign in with {provider.name}</span>
       </Button>
     </div>

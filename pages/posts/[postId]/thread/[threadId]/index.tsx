@@ -92,7 +92,7 @@ const Thread: React.FC<Props> = ({ isModal }) => {
 
   const { mutate } = useLikePost({ post: post ? post : undefined });
 
-  if (!post)
+  if (!post && !isModal)
     return (
       <div
         css={{
@@ -146,7 +146,7 @@ const Thread: React.FC<Props> = ({ isModal }) => {
           flexGrow: 1,
           maxWidth: "400px",
           height: "100%",
-          maxHeight: "600px",
+          maxHeight: isModal ? "600px" : "100%",
           borderRadius: "5px",
           flexDirection: "column",
           width: "100%",
@@ -203,7 +203,7 @@ const Thread: React.FC<Props> = ({ isModal }) => {
             padding: "10px 17px",
             overflowY: "scroll",
             maxHeight: "445px",
-            minHeight: "445px",
+            minHeight: isModal ? "0px" : "430px",
             height: "100%",
             [mQ("mobile")]: {
               overflow: "hidden",
