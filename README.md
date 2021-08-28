@@ -90,5 +90,5 @@ You do not need to setup all the providers (Google, Twitter, Discord, Github), y
 
 ## Known Issues
 
-  - There's an issue with Vercel deploy where `api/me` serverless function takes over 10s and times out after you login, after refreshing the page this issue seems to be gone.
+  - There's an issue with Vercel deployment where `api/me` serverless function takes over 10s and times out after you login, after refreshing the page this issue seems to be gone.
   - Provider sign in callback doesn't redirect users correctly sometimes.
