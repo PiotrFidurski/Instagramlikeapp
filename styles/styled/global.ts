@@ -225,7 +225,7 @@ export const menuCaret = css`
   width: 15px;
   height: 15px;
   z-index: -1;
-  background: var(--background-color);
+  background: var(--container-background);
   top: -7px;
   box-shadow: 0 0 5px 1px var(--shadow-color);
   transform: rotate(45deg);
@@ -252,7 +252,7 @@ export const StyledMenuItem = styled.div(
     color: danger ? "#ef5350" : "var(--primary-text-color)",
     background: active
       ? "var(--container-hover-background)"
-      : "var(--background-color)",
+      : "var(--container-background)",
     padding: "8px 16px",
     cursor: "pointer",
   })

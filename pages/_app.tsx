@@ -7,12 +7,15 @@ import styled from "@emotion/styled";
 import { mQ } from "@styled";
 import { Provider } from "next-auth/client";
 import { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import NProgress from "nprogress";
 import * as React from "react";
 import Modal from "react-modal";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { useTheme } from "utils/hooks/useTheme";
 import "../styles/globals.css";
+import "../styles/nprogress.css";
 
 Modal.setAppElement("#__next");
 
@@ -42,6 +45,27 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
 
   const [,] = useTheme();
+
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const handleStart = (url: string) => {
+      NProgress.start();
+    };
+    const handleStop = () => {
+      NProgress.done();
+    };
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleStop);
+    router.events.on("routeChangeError", handleStop);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleStop);
+      router.events.off("routeChangeError", handleStop);
+    };
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
