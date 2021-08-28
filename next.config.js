@@ -34,6 +34,7 @@ module.exports = {
   experimental: { scrollRestoration: true },
   env: {
     API_URL: process.env.API_URL,
+    SITE_URL: process.env.NEXTAUTH_URL,
   },
   images: {
     domains: [

@@ -42,10 +42,7 @@ const Login: React.FC<Props> = ({ isRegistering, providers }) => {
       const response = await signIn("credentials", {
         email,
         password,
-        callbackUrl:
-          process.env.NODE_ENV === "production"
-            ? "https://scuffedinsta.vercel.app"
-            : "http://localhost:3000",
+        callbackUrl: process.env.SITE_URL,
         redirect: false,
       });
       console.log(response);
