@@ -58,7 +58,6 @@ export default async (
       {
         width: 1080,
         height: 1080,
-        crop: "crop",
         gravity: "center",
         angle: Number(parsedForm.fields.angle),
       },
