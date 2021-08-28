@@ -11,17 +11,15 @@
 - [Environment Variables](#environment-variables)
 
 - [Deploy this yourself](#deploy-this-yourself)
-
-  - [Setting up the local environment](#settting-up-the-local-environment)
-
-  - [Setting up the production environment](#setting-up-the-production-environment)
+ 
+- [Known Issues](#known-issues)
 
 </details>
 
 ## Introduction
 
 Welcome to [Instagramlikeapp](https://scuffedinsta.vercel.app/), as the name suggests, this is a stripped down version of instagram app.
-
+The app is live and you're free to check it out and report any bugs u may find, here are some credentials if you dont wan't to sign in yourself: email: `test@example.com`, password: `Secret55%`
 
 <table>
   <tr>
@@ -68,3 +66,22 @@ You do not need to setup all the providers (Google, Twitter, Discord, Github), y
 
 
 ## Deploy this yourself
+
+- Clone to your computer
+
+  - `git clone https://github.com/[YOUR GITHUB USERNAME]/Instagramlikeapp`
+  
+  - `cd Instagramlikeapp`
+  
+  - `npm install`
+
+- Create .env.local in the root directory of your project, add env variables required.
+
+- Start a dev server
+
+  - `npm run dev`
+
+## Known Issues (most of these seem to happen randomly)
+
+  - There's an issue with Vercel deploy where `api/me` serverless function takes over 10s and times out after u sign in, after refreshing the page this issue seems to be gone.
+  - Provider sign in callback doesn't redirect users correctly sometimes.
