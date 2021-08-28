@@ -21,7 +21,7 @@ const ThreadedLine = styled.a`
   position: absolute;
   top: 35px;
   left: 12.5px;
-  z-index: 1;
+  z-index: 0;
   width: 10px;
   height: calc(100% - 50px);
   border-left: 4px solid transparent;

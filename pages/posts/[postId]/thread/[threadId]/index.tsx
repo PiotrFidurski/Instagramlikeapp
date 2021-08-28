@@ -273,7 +273,7 @@ const Thread: React.FC<Props> = ({ isModal }) => {
             css={{
               position: "sticky",
               zIndex: 2,
-              top: "50px",
+              top: "49px",
               background: "var(--container-background)",
               display: "flex",
               flexDirection: "column",

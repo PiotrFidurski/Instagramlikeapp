@@ -24,7 +24,7 @@ const ImageContainer = styled.div`
   > div {
     padding-bottom: ${
       imgWidth && imgHeight && !isModal
-        ? `calc(${imgHeight} / ${imgWidth} * 100%)`
+        ? `calc(${imgHeight} / ${imgWidth} * 100% + 1px)`
         : "100%"
     };
     position: unset !important;
