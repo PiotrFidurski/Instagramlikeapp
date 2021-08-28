@@ -56,9 +56,11 @@ export default async (
 
     const eager = [
       {
-        width: 1080,
-        height: 1080,
-        gravity: "center",
+        fetch_format: "auto",
+        quality: "auto",
+        width: 500,
+        crop: "limit",
+        dpr: 2.0,
         angle: Number(parsedForm.fields.angle),
       },
       {
