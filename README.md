@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Instagramlikeapp
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<details>
+<summary>Click to expand</summary>
+  
+- [Introduction](#introduction)  
+  
+- [Environment Variables](#environment-variables)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Deploy this yourself](#deploy-this-yourself)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  - [Setting up the local environment](#settting-up-the-local-environment)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+  - [Setting up the production environment](#setting-up-the-production-environment)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+</details>
 
-## Learn More
+## Introduction
 
-To learn more about Next.js, take a look at the following resources:
+Welcome to [Instagramlikeapp](https://scuffedinsta.vercel.app/), as the name suggests, this is a stripped down version of instagram app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You do not need to setup all the providers (Google, Twitter, Discord, Github), you can pick one and only setup that providers variables.
 
-## Deploy on Vercel
+## Required
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Name                | Description                                                                    | Example                                                     |
+| ------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| MONGODB_URI | your mongodb connection string | `mongodb://Chimson:picturefeed@localhost:27017/picturefeed`|
+| API_URL       | api url of your application                                                           | `https://scuffedinsta.vercel.app/api`                           |
+| NEXTAUTH_SECRET     | some secret key for your next-auth setup | `192334184120` |
+| NEXTAUTH_URL        | The URI of the app                                                             | `https://scuffedinsta.vercel.app`                           |
+| CLOUDINARY_CLOUD_NAME | your cloudinary name | `chimson`|
+| CLOUDINARY_API_KEY | your cloudinary key | `1239812948192`|
+| CLOUDINARY_API_SECRET | your cloudinary secret | `asdkoamaasdk8asd9Y`|
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Pick any of those or setup all of them
+
+| Name                | Description                                                                    | Example                                                     |
+| ------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| GITHUB_ID           | Github Application Client id in [console](https://github.com/settings/applications) | `e234092349dasd`                                       |
+| GITHUB_SECRET       | Github secret in [console](https://github.com/settings/applications)              | `asd98as9f89P-asd09asd09asdP`                                            |
+| DISCORD_ID          | Discord Application Client id in [console](https://discord.com/developers/applications) | `34598394580123` |
+| DISCORD_SECRET       | Discord secret in [console](https://discord.com/developers/applications)              | `asdkoasokdasdc8as8dPASD`                                            |
+| TWITTER_ID           | Twitter Application Client id in [console](https://developer.twitter.com/en/portal) | `82349nasdkasdOASDo9`                                       |
+| TWITTER_SECRET       | Twitter secret in [console](https://developer.twitter.com/en/portal)             | `JAdkasdnasjdKFAFIe8ashhsd`                                            |
+| GOOGLE_ID           | Google Application Client id in [console](https://console.cloud.google.com/apis/dashboard) | `039403248203-1aslkdalksdvJsda`                                       |
+| GOOGLE_SECRET       | Google secret in [console](https://console.cloud.google.com/apis/dashboard)             | `ASdkasfasfjotr-Zasd98fjhas`                            |
+
+
+## Deploy this yourself
