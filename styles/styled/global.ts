@@ -255,6 +255,7 @@ export const StyledMenuItem = styled.div(
       : "var(--container-background)",
     padding: "8px 16px",
     cursor: "pointer",
+    minWidth: "0px",
   })
 );
 

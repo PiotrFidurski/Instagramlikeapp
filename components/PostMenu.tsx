@@ -2,6 +2,7 @@
 import { Menu } from "@headlessui/react";
 import { PostType } from "@models/Post";
 import {
+  elipsisText,
   menuCaretPostVariant,
   menuItemsPostVariant,
   StyledMenuItem,
@@ -67,9 +68,11 @@ export const PostMenu: React.FC<Props> = ({ ...props }) => {
                 setActive(false);
               }}
             >
-              {post.owner.isFollowed
-                ? `Unfollow ${post.owner.username}`
-                : `Follow ${post.owner.username}`}
+              <span css={elipsisText}>
+                {post.owner.isFollowed
+                  ? `Unfollow ${post.owner.username}`
+                  : `Follow ${post.owner.username}`}
+              </span>
             </StyledMenuItem>
           )}
         </Menu.Item>
