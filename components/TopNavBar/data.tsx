@@ -12,7 +12,7 @@ import React from "react";
 import { UserMenu } from "./UserMenu";
 
 interface Props {
-  user: UserType;
+  user: UserType | undefined;
   onClick: () => void;
   query: NodeJS.Dict<string | string[]>;
   goTo: (path: string) => void;

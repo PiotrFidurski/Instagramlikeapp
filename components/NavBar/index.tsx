@@ -1,16 +1,13 @@
-import { api } from "@api/index";
+import { useAuth } from "@components/AuthContext/useAuth";
 import { BottomNavbar } from "@components/BottomNavbar";
 import { TopNavbar } from "@components/TopNavBar";
-import { UserType } from "@models/User";
+import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import { useQuery } from "react-query";
 
 const NavBar: React.FC = () => {
-  const { isLoading, data } = useQuery<UserType>("me", () => api.users.me(), {
-    retry: false,
-  });
-
   const { pathname } = useRouter();
+  const [session] = useSession();
+  const { user, loading } = useAuth();
 
   return (
     <div
@@ -19,17 +16,8 @@ const NavBar: React.FC = () => {
           pathname === "/login" || pathname === "/register" ? "none" : "flex",
       }}
     >
-      <>
-        {isLoading ? <></> : null}
-        <>
-          {data ? (
-            <>
-              <BottomNavbar user={data!} />
-            </>
-          ) : null}
-          {data ? <TopNavbar user={data!} /> : null}
-        </>
-      </>
+      <BottomNavbar />
+      <TopNavbar />
     </div>
   );
 };

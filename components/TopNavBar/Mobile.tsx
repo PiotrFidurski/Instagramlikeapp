@@ -1,13 +1,11 @@
-import { UserType } from "@models/User";
+import { useAuth } from "@components/AuthContext/useAuth";
 import { mQ } from "@styled";
 import { useRouter } from "next/router";
 import { data } from "./data";
 
-interface Props {
-  user: UserType;
-}
+export const Mobile: React.FC = () => {
+  const { user, loading } = useAuth();
 
-export const Mobile: React.FC<Props> = ({ user }) => {
   const { pathname, back, query, push } = useRouter();
 
   return (

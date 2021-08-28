@@ -28,7 +28,7 @@ import * as React from "react";
 import { useTheme } from "utils/hooks/useTheme";
 
 interface Props {
-  user: UserType;
+  user: UserType | undefined;
 }
 
 export const UserMenu: React.FC<Props> = ({ user }) => {

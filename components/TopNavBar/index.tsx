@@ -1,17 +1,12 @@
-import { UserType } from "@models/User";
 import { navContainer, navWrapper } from "@styled";
 import { Desktop } from "./Desktop";
 import { Mobile } from "./Mobile";
 
-interface Props {
-  user: UserType;
-}
-
-export const TopNavbar: React.FC<Props> = ({ user }) => (
+export const TopNavbar: React.FC = () => (
   <div css={navContainer}>
     <div css={navWrapper}>
-      <Desktop user={user} />
-      <Mobile user={user} />
+      <Desktop />
+      <Mobile />
     </div>
   </div>
 );

@@ -1,4 +1,5 @@
 import { AlertProvider } from "@components/Alerts/AlertComposition/context";
+import { AuthProvider } from "@components/AuthContext/Provider";
 import { ModalProvider } from "@components/Modals/ModalComposition/context";
 import { NavBar } from "@components/NavBar";
 import { ScrollProvider } from "@components/ScrollContext";
@@ -45,18 +46,20 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <ScrollProvider>
-          <AlertProvider>
-            <Provider session={pageProps.session}>
-              <ModalProvider>
-                <NavBar />
-                <MainContainer>
-                  <Component {...pageProps} />
-                </MainContainer>
-              </ModalProvider>
-            </Provider>
-          </AlertProvider>
-        </ScrollProvider>
+        <AuthProvider>
+          <ScrollProvider>
+            <AlertProvider>
+              <Provider session={pageProps.session}>
+                <ModalProvider>
+                  <NavBar />
+                  <MainContainer>
+                    <Component {...pageProps} />
+                  </MainContainer>
+                </ModalProvider>
+              </Provider>
+            </AlertProvider>
+          </ScrollProvider>
+        </AuthProvider>
       </Hydrate>
     </QueryClientProvider>
   );

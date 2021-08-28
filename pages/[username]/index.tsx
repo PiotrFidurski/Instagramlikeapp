@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 import { Skeleton } from "@material-ui/lab";
 import { PostType } from "@models/Post";
 import { UserType } from "@models/User";
-import { AvatarWrapper, Button, elipsisText, mQ } from "@styled";
+import { AvatarWrapper, Button, elipsisText, mQ, Spinner } from "@styled";
 import format from "date-fns/format";
 import { useSession } from "next-auth/client";
 import Image from "next/image";
@@ -63,7 +63,21 @@ const UserPage: React.FC<Props> = () => {
 
   const { mutate } = useFollowUser({ user: user! });
 
-  if (!user) return <></>;
+  if (!user)
+    return (
+      <div
+        css={{
+          maxWidth: "350px",
+          margin: "0 auto",
+          height: "400px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spinner />
+      </div>
+    );
 
   return (
     user && (
@@ -187,17 +201,6 @@ const UserPage: React.FC<Props> = () => {
                     <span css={elipsisText}>
                       {user?.isFollowed ? "Following" : "Follow"}
                     </span>
-                  </Button>
-                ) : null}
-                {!loading && !session ? (
-                  <Button
-                    active={false}
-                    onClick={() => {}}
-                    css={{
-                      [mQ("mobile")]: { marginTop: "10px" },
-                    }}
-                  >
-                    <span css={elipsisText}>Follow</span>
                   </Button>
                 ) : null}
               </div>

@@ -1,6 +1,7 @@
 import { Plus } from "@assets/svgs/index";
+import { useAuth } from "@components/AuthContext/useAuth";
 import { SearchBar } from "@components/Searchbar";
-import { UserType } from "@models/User";
+import { Skeleton } from "@material-ui/lab";
 import {
   Button,
   elipsisText,
@@ -16,11 +17,9 @@ import * as React from "react";
 import { SearchMenu } from "./SearchMenu";
 import { UserMenu } from "./UserMenu";
 
-interface Props {
-  user: UserType;
-}
+export const Desktop: React.FC = () => {
+  const { user, loading } = useAuth();
 
-export const Desktop: React.FC<Props> = ({ user }) => {
   const { pathname, back, push } = useRouter();
 
   return (
@@ -65,18 +64,30 @@ export const Desktop: React.FC<Props> = ({ user }) => {
         </div>
       ) : null}
       <div css={[navItem, navItemEnd]}>
-        <Link href="/create">
-          <a css={{ display: "flex" }}>
-            <Plus
-              width="24px"
-              height="24px"
-              fill="var(--primary-text-color)"
-              css={{ marginRight: "10px", "&:hover": { cursor: "pointer" } }}
-            />
-          </a>
-        </Link>
-        {user ? <UserMenu user={user} /> : <div>asd</div>}
-        {!user ? (
+        {loading ? (
+          <div css={{ width: "24px", height: "24px", marginRight: "10px" }}>
+            <Skeleton variant="circle" width="24px" />
+          </div>
+        ) : null}
+        {!loading && user ? (
+          <Link href="/create">
+            <a css={{ display: "flex" }}>
+              <Plus
+                width="24px"
+                height="24px"
+                fill="var(--primary-text-color)"
+                css={{ marginRight: "10px", "&:hover": { cursor: "pointer" } }}
+              />
+            </a>
+          </Link>
+        ) : null}
+        {loading ? (
+          <div css={{ width: "24px", height: "24px" }}>
+            <Skeleton variant="circle" width="24px" />
+          </div>
+        ) : null}
+        {!loading && user ? <UserMenu user={user} /> : null}
+        {!user && !loading ? (
           <div
             css={{
               display: "flex",

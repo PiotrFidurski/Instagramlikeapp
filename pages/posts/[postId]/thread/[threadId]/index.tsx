@@ -16,7 +16,7 @@ import { useScroll } from "@components/ScrollContext";
 import { css } from "@emotion/react";
 import { CommentType } from "@models/Comment";
 import { PostType } from "@models/Post";
-import { Button, elipsisText, mQ } from "@styled";
+import { Button, elipsisText, mQ, Spinner } from "@styled";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -92,7 +92,21 @@ const Thread: React.FC<Props> = ({ isModal }) => {
 
   const { mutate } = useLikePost({ post: post ? post : undefined });
 
-  // if (!post) return <></>;
+  if (!post)
+    return (
+      <div
+        css={{
+          maxWidth: "350px",
+          margin: "0 auto",
+          height: "400px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spinner />
+      </div>
+    );
 
   return (
     <div
@@ -189,6 +203,7 @@ const Thread: React.FC<Props> = ({ isModal }) => {
             padding: "10px 17px",
             overflowY: "scroll",
             maxHeight: "445px",
+            minHeight: "445px",
             height: "100%",
             [mQ("mobile")]: {
               overflow: "hidden",
