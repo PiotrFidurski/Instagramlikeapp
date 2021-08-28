@@ -22,6 +22,21 @@
 
 Welcome to [Instagramlikeapp](https://scuffedinsta.vercel.app/), as the name suggests, this is a stripped down version of instagram app.
 
+
+<table>
+  <tr>
+    <td align="left">
+<img src="https://i.imgur.com/fvp3Z9W.png" align="left" /></td>
+    <td align="right"><img src="https://i.imgur.com/rXcoWAc.png"  align="right" /></td>
+  </tr>
+  <tr>
+    <td align="left" >
+<img src="https://i.imgur.com/RTfCtIN.png" align="left" /></td>
+ 
+  <td align="left"><img src="https://i.imgur.com/DXPRfHm.png" align="right" /></td>
+     </tr>
+</table>
+
 ## Environment variables
 
 You do not need to setup all the providers (Google, Twitter, Discord, Github), you can pick one and only setup that providers variables.
