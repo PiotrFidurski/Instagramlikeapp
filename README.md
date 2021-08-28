@@ -80,6 +80,13 @@ You do not need to setup all the providers (Google, Twitter, Discord, Github), y
 - Start a dev server
 
   - `npm run dev`
+  
+- Deploy to Vercel
+  
+  - Go to [vercel](https://vercel.com) and create an account if you don't have it yet.
+  - Click on `New Project` button.
+  - Select the repo you want to import and deploy.
+  - Configure your project remember to setup your Environment Variables.
 
 ## Known Issues
 
