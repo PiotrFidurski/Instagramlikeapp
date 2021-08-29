@@ -69,7 +69,7 @@ You do not need to setup all the providers (Google, Twitter, Discord, Github), y
 
 - Clone to your computer.
 
-  - `git clone https://github.com/[YOUR GITHUB USERNAME]/Instagramlikeapp`
+  - `clone this repo`
   
   - `cd Instagramlikeapp`
   
