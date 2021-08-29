@@ -1,6 +1,7 @@
 import { api } from "@api/index";
 import { CommentType } from "@models/Comment";
 import { InfiniteData, useMutation, useQueryClient } from "react-query";
+import { likeNested } from "utils/fns";
 import { PaginatedResult } from "utils/types";
 
 export const useLikeComment = ({
@@ -16,17 +17,6 @@ export const useLikeComment = ({
 
   return useMutation(() => api.comments.like({ commentId: comment!._id }), {
     onMutate: () => {
-      const updateDeeplyNested = (c: CommentType) => {
-        c.replies?.map((child) => {
-          if (child._id === comment!._id) {
-            child.isLiked = !child.isLiked;
-            child.likesCount = child.isLiked
-              ? child.likesCount + 1
-              : child.likesCount - 1;
-          }
-          updateDeeplyNested(child);
-        });
-      };
       const currentComments:
         | InfiniteData<PaginatedResult<CommentType>>
         | undefined = queryClient.getQueryData(["comments", postId, threadId]);
@@ -41,7 +31,7 @@ export const useLikeComment = ({
                 c.isLiked = !c.isLiked;
                 c.likesCount = c.isLiked ? c.likesCount + 1 : c.likesCount - 1;
               } else {
-                updateDeeplyNested(c);
+                likeNested(c, comment!);
               }
               return c;
             }),

@@ -25,8 +25,8 @@ const getData = async (endpoint: string, body?: any, config?: RequestInit) => {
     headers: {
       "Content-Type": "application/json",
     },
-    mode: "same-origin",
-    credentials: "include",
+    // mode: "same-origin",
+    // credentials: "include",
     body: body ? JSON.stringify({ ...body }) : null,
     ...config!,
   });

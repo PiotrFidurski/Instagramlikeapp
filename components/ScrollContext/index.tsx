@@ -14,6 +14,7 @@ const Context = React.createContext<{
 
 export const ScrollProvider: React.FC = ({ children }) => {
   const [scroll, setScroll] = React.useState({ scrollTo: 0, commentId: "" });
+
   const router = useRouter();
 
   const controlOnRoutes = [

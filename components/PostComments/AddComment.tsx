@@ -10,6 +10,7 @@ import { Reply } from "pages/posts/[postId]/thread/[threadId]";
 import * as React from "react";
 import { InfiniteData, useMutation, useQueryClient } from "react-query";
 import { createSchema } from "schemaValidators/comment";
+import { addNested } from "utils/fns";
 import { useAutosize } from "utils/hooks/useAutosize";
 import { PaginatedResult } from "utils/types";
 
@@ -52,15 +53,6 @@ export const AddComment: React.FC<Props> = ({ reply, setReply }) => {
     (values: Values) => api.comments.create({ ...values }),
     {
       onSuccess: (data: CommentType) => {
-        const updateDeeplyNested = (comment: any) => {
-          comment.replies?.map((child: any) => {
-            if (child._id === data.inReplyToCommentId) {
-              child.replies?.unshift(data);
-              child.hasChildren = child.hasChildren + 1;
-            }
-            updateDeeplyNested(child);
-          });
-        };
         if (!data.inReplyToCommentId) {
           queryClient.setQueryData(
             ["comments", router.query.postId, router.query.threadId],
@@ -93,7 +85,7 @@ export const AddComment: React.FC<Props> = ({ reply, setReply }) => {
                         comment.replies.unshift(data);
                         comment.hasChildren = comment.hasChildren + 1;
                       } else {
-                        updateDeeplyNested(comment);
+                        addNested(comment, data);
                       }
 
                       return comment;

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { data } from "./data";
 
 export const Mobile: React.FC = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   const { pathname, back, query, push } = useRouter();
 

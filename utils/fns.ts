@@ -1,9 +1,10 @@
+import { CommentType } from "@models/Comment";
 import { NextApiRequest } from "next";
 import { getSession } from "next-auth/client";
 import { NextApiResponse } from "next-auth/internals/utils";
 import * as yup from "yup";
 
-export const setFormData = (values: Record<string, any>) => {
+const setFormData = (values: Record<string, any>) => {
   const formData = new FormData();
   Object.entries(values).forEach((entry: any) => {
     const [key, value] = entry;
@@ -11,16 +12,6 @@ export const setFormData = (values: Record<string, any>) => {
   });
   return formData;
 };
-
-async function resolvePromise(promise: any) {
-  try {
-    const data = await promise;
-
-    return [data, null];
-  } catch (error) {
-    return [null, error];
-  }
-}
 
 function formatYupErrors(errors: yup.ValidationError) {
   let formatted: Record<string, string> = {};
@@ -65,4 +56,55 @@ const authorize = async (
   }
 };
 
-export { resolvePromise, formatYupErrors, authorize };
+const addNested = (comment: CommentType, data: CommentType) => {
+  comment.replies?.map((child) => {
+    if (child._id === data.inReplyToCommentId) {
+      child.replies?.unshift(data);
+      child.hasChildren = child.hasChildren + 1;
+    }
+    addNested(child, data);
+  });
+};
+
+const likeNested = (c: CommentType, comment: CommentType) => {
+  c.replies?.map((child) => {
+    if (child._id === comment!._id) {
+      child.isLiked = !child.isLiked;
+      child.likesCount = child.isLiked
+        ? child.likesCount + 1
+        : child.likesCount - 1;
+    }
+    likeNested(child, comment);
+  });
+};
+
+const deleteNested = (
+  c: CommentType,
+  comment: CommentType,
+  data: CommentType
+) => {
+  if (!c.replies) return c;
+  c.replies.map((child) => {
+    if (child.hasChildren > 0 && child._id === comment._id) {
+      child.owner.username = "User has deleted this comment.";
+      child.owner.image = data.owner.image;
+      child.text = "";
+      child.isTombstone = data.isTombstone;
+    }
+
+    if (child.hasChildren === 0 && child._id === comment._id) {
+      c.hasChildren = c.hasChildren - 1;
+    }
+
+    deleteNested(child, comment, data);
+  });
+};
+
+export {
+  formatYupErrors,
+  authorize,
+  setFormData,
+  addNested,
+  likeNested,
+  deleteNested,
+};

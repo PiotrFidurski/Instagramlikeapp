@@ -5,9 +5,7 @@ import PostPage from "pages/posts/[postId]/index";
 import * as React from "react";
 import { ModalBase } from "./ModalComposition";
 
-interface Props {}
-
-export const PostModal: React.FC<Props> = () => {
+export const PostModal: React.FC = () => {
   const [session] = useSession();
 
   const router = useRouter();

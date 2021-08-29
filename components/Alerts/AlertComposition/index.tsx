@@ -49,8 +49,6 @@ const Alert: React.FC<Props> & AlertComposition = ({ children, ...props }) => {
           borderRadius: "8px",
           content: '""',
           background: "var(--border-color)",
-          // background:
-          //   "linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #b71c1c 70%, #cc4499 100%)",
           zIndex: -1,
         },
       }}

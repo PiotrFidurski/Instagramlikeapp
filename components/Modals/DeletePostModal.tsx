@@ -9,9 +9,7 @@ import { PaginatedResult } from "utils/types";
 import { ModalBase } from "./ModalComposition";
 import { useModal } from "./ModalComposition/context";
 
-interface Props {}
-
-export const DeletePostModal: React.FC<Props> = () => {
+export const DeletePostModal: React.FC = () => {
   const {
     setModal,
     modal: { props },
@@ -60,7 +58,7 @@ export const DeletePostModal: React.FC<Props> = () => {
           setModal((modal) => ({ ...modal, key: "", open: false, props: {} }))
         }
         title="Delete Post?"
-      ></ModalBase.Header>
+      />
       <LoadingBar isLoading={isLoading} status={status} />
       <ModalBase.Content>
         <div

@@ -20,7 +20,7 @@ import { UserMenu } from "./UserMenu";
 export const Desktop: React.FC = () => {
   const { user, loading } = useAuth();
 
-  const { pathname, back, push } = useRouter();
+  const { pathname, push } = useRouter();
 
   return (
     <div
@@ -37,7 +37,7 @@ export const Desktop: React.FC = () => {
       }}
     >
       <div css={[navItem, navItemStart]}>
-        <div onClick={pathname !== "/" ? () => back() : () => push("/")}>
+        <div onClick={() => push("/")}>
           <a css={{ height: "100%", cursor: "pointer" }}>
             <span
               css={{

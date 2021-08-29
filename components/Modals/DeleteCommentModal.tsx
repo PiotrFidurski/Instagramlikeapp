@@ -5,13 +5,12 @@ import { CommentType } from "@models/Comment";
 import { Button, mQ } from "@styled";
 import * as React from "react";
 import { InfiniteData, useMutation, useQueryClient } from "react-query";
+import { deleteNested } from "utils/fns";
 import { PaginatedResult } from "utils/types";
 import { ModalBase } from "./ModalComposition";
 import { useModal } from "./ModalComposition/context";
 
-interface Props {}
-
-export const DeleteCommentModal: React.FC<Props> = () => {
+export const DeleteCommentModal: React.FC = () => {
   const {
     setModal,
     modal: { props },
@@ -28,22 +27,6 @@ export const DeleteCommentModal: React.FC<Props> = () => {
     () => api.comments.delete({ commentId: comment?._id! }),
     {
       onSuccess: (data: CommentType) => {
-        const deleteNested = (c: CommentType) => {
-          if (!c.replies) return c;
-          c.replies.map((reply) => {
-            if (reply.hasChildren > 0 && reply._id === comment._id) {
-              reply.owner.username = "User has deleted this comment.";
-              reply.owner.image = data.owner.image;
-              reply.text = "";
-              reply.isTombstone = data.isTombstone;
-            }
-            if (reply.hasChildren === 0 && reply._id === comment._id) {
-              c.hasChildren = c.hasChildren - 1;
-            }
-            deleteNested(reply);
-          });
-        };
-
         queryClient.setQueryData(
           ["comments", ...queryKeys],
           (old: InfiniteData<PaginatedResult<CommentType>> | undefined) => ({
@@ -58,11 +41,13 @@ export const DeleteCommentModal: React.FC<Props> = () => {
                   reply.isTombstone = data.isTombstone;
                   return reply;
                 }
+
                 if (reply.hasChildren === 0 && reply._id === comment._id) {
                   return reply._id !== comment._id;
                 }
 
-                deleteNested(reply);
+                deleteNested(reply, comment, data);
+
                 return reply;
               }),
             })),
@@ -92,7 +77,7 @@ export const DeleteCommentModal: React.FC<Props> = () => {
           setModal((modal) => ({ ...modal, key: "", open: false, props: {} }))
         }
         title="Delete Comment?"
-      ></ModalBase.Header>
+      />
       <LoadingBar isLoading={isLoading} status={status} />
       <ModalBase.Content>
         <div

@@ -45,7 +45,7 @@ const Login: React.FC<Props> = ({ isRegistering, providers }) => {
         callbackUrl: process.env.SITE_URL,
         redirect: false,
       });
-      console.log(response);
+
       if (response?.url) push(response?.url);
     } catch (error) {
       throw new Error(error as string);

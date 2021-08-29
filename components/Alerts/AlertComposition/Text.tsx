@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 import { elipsisText } from "@styled";
+import { AlertProps } from "./context";
 
-const Text: React.FC<any> = ({ children }) => {
+const Text: React.FC<AlertProps> = ({ children }) => {
   return (
     <div
       css={{
