@@ -18,7 +18,7 @@ import { SearchMenu } from "./SearchMenu";
 import { UserMenu } from "./UserMenu";
 
 export const Desktop: React.FC = () => {
-  const { user, loading, error } = useAuth();
+  const { user, loading, sessionLoading, session } = useAuth();
 
   const { pathname, push } = useRouter();
 
@@ -87,7 +87,7 @@ export const Desktop: React.FC = () => {
           </div>
         ) : null}
         {!loading && user ? <UserMenu user={user} /> : null}
-        {!user && !loading && error ? (
+        {!user && !sessionLoading && !session ? (
           <div
             css={{
               display: "flex",
