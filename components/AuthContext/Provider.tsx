@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 interface ContextProps {
   user: UserType;
   loading: boolean;
+  error: boolean;
 }
 
 const AuthContext = React.createContext<ContextProps | null>(null);
@@ -14,12 +15,14 @@ const AuthContext = React.createContext<ContextProps | null>(null);
 const AuthProvider: React.FC = ({ children }) => {
   const [session] = useSession();
 
-  const { data, isLoading } = useQuery("me", () => api.users.me(), {
+  const { data, isLoading, isError } = useQuery("me", () => api.users.me(), {
     enabled: !!session,
   });
 
   return (
-    <AuthContext.Provider value={{ user: data, loading: isLoading }}>
+    <AuthContext.Provider
+      value={{ user: data, loading: isLoading, error: isError }}
+    >
       {children}
     </AuthContext.Provider>
   );
