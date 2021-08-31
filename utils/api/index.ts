@@ -127,8 +127,8 @@ const api = {
           : `users/search?query=${query?.toLowerCase()}&limit=${limit}`
       );
     },
-    me: ({ userId }: { userId: string }) => {
-      return getData(`users/me`, { userId });
+    me: () => {
+      return getData(`users/me`);
     },
     providers: () => {
       return getData("users/providers");

@@ -14,9 +14,9 @@ const AuthContext = React.createContext<ContextProps | null>(null);
 const AuthProvider: React.FC = ({ children }) => {
   const [session] = useSession();
 
-  const { data, isLoading } = useQuery("me", () =>
-    api.users.me({ userId: session?.user?._id! })
-  );
+  const { data, isLoading } = useQuery("me", () => api.users.me(), {
+    enabled: !!session,
+  });
 
   return (
     <AuthContext.Provider value={{ user: data, loading: isLoading }}>
