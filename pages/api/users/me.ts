@@ -2,19 +2,18 @@ import { userPipeline } from "@api/aggregation";
 import User, { UserType } from "@models/User";
 import { Types } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
 import { Response } from "utils/types";
 
 export default async (
   req: NextApiRequest,
   res: NextApiResponse<Response<UserType | null>>
 ) => {
-  const session = await getSession({ req });
+  const { userId } = req.body;
 
   try {
     const me = await User.aggregate([
-      { $match: { _id: { $eq: Types.ObjectId(session?.user?._id) } } },
-      ...userPipeline(session!),
+      { $match: { _id: { $eq: Types.ObjectId(userId as string) } } },
+      ...userPipeline(null),
     ]);
 
     return res.status(200).json({ success: true, errors: {}, data: me[0] });

@@ -46,20 +46,20 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <AuthProvider>
-          <ScrollProvider>
-            <AlertProvider>
-              <Provider session={pageProps.session}>
+        <ScrollProvider>
+          <AlertProvider>
+            <Provider session={pageProps.session}>
+              <AuthProvider>
                 <ModalProvider>
                   <NavBar />
                   <MainContainer>
                     <Component {...pageProps} />
                   </MainContainer>
                 </ModalProvider>
-              </Provider>
-            </AlertProvider>
-          </ScrollProvider>
-        </AuthProvider>
+              </AuthProvider>
+            </Provider>
+          </AlertProvider>
+        </ScrollProvider>
       </Hydrate>
     </QueryClientProvider>
   );
