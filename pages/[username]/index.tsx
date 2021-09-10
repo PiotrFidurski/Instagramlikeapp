@@ -271,7 +271,7 @@ const UserPage: React.FC<Props> = () => {
             alignItems: "stretch",
           }}
         >
-          {!isLoading ? (
+          {isLoading ? (
             <div css={row}>
               {Array(12)
                 .fill(null)
