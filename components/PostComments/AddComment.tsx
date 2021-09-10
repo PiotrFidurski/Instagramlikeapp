@@ -167,6 +167,7 @@ export const AddComment: React.FC<Props> = ({ reply, setReply }) => {
               <AvatarWrapper width="35px" height="35px">
                 <Image
                   src={session?.user?.image!}
+                  alt="userAvatar"
                   objectFit="contain"
                   width="150px"
                   height="150px"

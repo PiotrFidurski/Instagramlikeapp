@@ -209,6 +209,7 @@ const EditPage: React.FC<Props> = ({}) => {
               >
                 <AvatarWrapper width="90px" height="90px">
                   <Image
+                    alt="avatarPreview"
                     src={preview ? preview : (user?.image as string)}
                     objectFit="cover"
                     layout="fill"

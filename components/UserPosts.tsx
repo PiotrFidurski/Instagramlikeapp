@@ -115,6 +115,7 @@ export const UserPosts: React.FC<Props> = ({ index, post }) => {
             layout="responsive"
             objectFit="cover"
             width="100%"
+            alt="postThumbnail"
             height="100%"
           />
         </div>

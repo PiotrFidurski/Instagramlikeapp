@@ -80,7 +80,7 @@ export const UserMenu: React.FC<Props> = ({ user }) => {
               src={user.image}
               objectFit="contain"
               layout="fill"
-              alt="avatar"
+              alt="userAvatar"
               css={{
                 borderRadius: 9999,
                 width: "100%",

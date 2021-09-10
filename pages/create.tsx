@@ -188,6 +188,7 @@ const CreatePage: React.FC = () => {
                       <Image
                         src={session?.user?.image!}
                         objectFit="contain"
+                        alt="userAvatar"
                         width="150px"
                         height="150px"
                         layout="responsive"

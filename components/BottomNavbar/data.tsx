@@ -93,7 +93,13 @@ export const paths: Array<Paths> = [
     render: ({ image }) => ({
       regular: (
         <AvatarWrapper width="24px" height="24px">
-          <Image width="24" height="24" layout="intrinsic" src={image} />
+          <Image
+            width="24"
+            height="24"
+            layout="intrinsic"
+            alt="userAvatar"
+            src={image}
+          />
         </AvatarWrapper>
       ),
       filledVariant: (

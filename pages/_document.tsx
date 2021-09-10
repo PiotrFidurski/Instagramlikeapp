@@ -22,6 +22,8 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
+        <title>Upload your picture!</title>
+        <meta property="og:title" content="Upload your picture!" key="title" />
         <body css={{ background: "var(--background-color)" }}>
           <Main />
           <div
