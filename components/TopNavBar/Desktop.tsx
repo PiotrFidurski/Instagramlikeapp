@@ -38,7 +38,10 @@ export const Desktop: React.FC = () => {
     >
       <div css={[navItem, navItemStart]}>
         <div onClick={() => push("/")}>
-          <a css={{ height: "100%", cursor: "pointer" }}>
+          <a
+            css={{ height: "100%", cursor: "pointer" }}
+            href="/https://scuffedinsta.vercel.app/"
+          >
             <span
               css={{
                 height: "100%",
