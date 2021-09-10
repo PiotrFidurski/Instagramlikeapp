@@ -51,6 +51,7 @@ export const ImageComponent: React.FC<Props> = ({
         <Skeleton variant="rect" width="100%" animation="wave">
           <ImageContainer>
             <Image
+              alt="placeholder"
               src="/worry.png"
               layout="fill"
               objectFit="cover"
@@ -71,6 +72,7 @@ export const ImageComponent: React.FC<Props> = ({
             objectFit="cover"
             quality={100}
             loading="eager"
+            alt="postImage"
           />
         </ImageContainer>
       )}
