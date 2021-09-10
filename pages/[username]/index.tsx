@@ -271,11 +271,11 @@ const UserPage: React.FC<Props> = () => {
             alignItems: "stretch",
           }}
         >
-          {isLoading ? (
+          {!isLoading ? (
             <div css={row}>
               {Array(12)
                 .fill(null)
-                .map((el, index) => (
+                .map((_, index) => (
                   <div
                     key={index}
                     css={css`
@@ -289,14 +289,24 @@ const UserPage: React.FC<Props> = () => {
                     `}
                   >
                     <Skeleton variant="rect" />
-                    <Image
-                      src={"/"}
-                      alt="placeholder"
-                      layout="responsive"
-                      objectFit="cover"
-                      width="100%"
-                      height="100%"
-                    />
+                    <div
+                      style={{
+                        display: "block",
+                        overflow: "hidden",
+                        position: "relative",
+                        boxSizing: "border-box",
+                        margin: "0px",
+                        visibility: "hidden",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "block",
+                          boxSizing: "border-box",
+                          paddingTop: "100%",
+                        }}
+                      />
+                    </div>
                   </div>
                 ))}
             </div>
