@@ -18,7 +18,7 @@ export const Avatar: React.FC<AvatarProps> = ({ loading, image, smaller }) => {
       width={smaller ? "38px" : "48px"}
       height={smaller ? "38px" : "48px"}
     >
-      <Image src={image!} objectFit="contain" layout="fill" alt="avatar" />
+      <Image src={image!} objectFit="contain" alt="userAvatar" layout="fill" />
     </AvatarWrapper>
   );
 };

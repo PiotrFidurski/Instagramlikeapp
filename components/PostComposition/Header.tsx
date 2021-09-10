@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ post, showSkeleton }) => (
               src={post.owner.image}
               objectFit="contain"
               layout="fill"
-              alt="avatar"
+              alt="userAvatar"
               css={{ borderRadius: 9999 }}
             />
           </AvatarWrapper>

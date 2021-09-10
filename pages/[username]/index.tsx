@@ -117,6 +117,7 @@ const UserPage: React.FC<Props> = () => {
             <AvatarWrapper width="100%" height="100%">
               <Image
                 src={user?.image as string}
+                alt="userAvatar"
                 objectFit="contain"
                 width="100%"
                 height="100%"
@@ -290,6 +291,7 @@ const UserPage: React.FC<Props> = () => {
                     <Skeleton variant="rect" />
                     <Image
                       src={"/"}
+                      alt="placeholder"
                       layout="responsive"
                       objectFit="cover"
                       width="100%"
