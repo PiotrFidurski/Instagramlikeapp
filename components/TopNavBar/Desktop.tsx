@@ -37,24 +37,22 @@ export const Desktop: React.FC = () => {
       }}
     >
       <div css={[navItem, navItemStart]}>
-        <div onClick={() => push("/")}>
-          <a
-            css={{ height: "100%", cursor: "pointer" }}
-            href="/https://scuffedinsta.vercel.app/"
+        <div
+          onClick={() => push("/")}
+          css={{ ":hover": { cursor: "pointer" } }}
+        >
+          <span
+            css={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              letterSpacing: "2.5px",
+              fontWeight: 600,
+              color: "var(--primary-text-color)",
+            }}
           >
-            <span
-              css={{
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                letterSpacing: "2.5px",
-                fontWeight: 600,
-                color: "var(--primary-text-color)",
-              }}
-            >
-              PictureFeed
-            </span>
-          </a>
+            PictureFeed
+          </span>
         </div>
       </div>
       {pathname !== "/search" ? (
