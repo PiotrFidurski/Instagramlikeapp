@@ -23,7 +23,12 @@ class MyDocument extends Document {
           />
         </Head>
         <title>Upload your picture!</title>
-        <meta property="og:title" content="Upload your picture!" key="title" />
+        <meta
+          property="og:title"
+          content="Upload your picture!"
+          key="title"
+          name="description"
+        />
         <body css={{ background: "var(--background-color)" }}>
           <Main />
           <div
